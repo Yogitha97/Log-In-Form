@@ -3,6 +3,10 @@ $(document).ready(function(){
     $(".btn").click(function(){
         $("#frm").toggle();
     });
+    $(".edit").click(function(){
+        alert("hi");
+        $("#frm").show();
+    });
 });
 function display(btnvalue)
 {
@@ -16,19 +20,20 @@ beforeSend: function(){}
 var trArr = new Array();
 $.each(response.data, function(i, item){
    trArr.push('<tr><td>' + item.first_name ," " +item.last_name+ '</td><td>' + item.email + '</td><td><img id="img" src="' 
-   + item.avatar + '" width="100px" /></td><td> <a href="#" class="edit"><i style="color:goldenrod"class="material-icons">&#xE254;</i> <a class="delete"><i style="color:red" class="material-icons">&#xE872;</i></a></a>' + '</td></tr>'  );
-   
+   + item.avatar + '" width="100px" /></td><td><a href="#" onclick="fun();" class="edit"><i style="color:goldenrod"class="material-icons">&#xE254;</i> <a href="#" data-toggle="modal" data-target="#myModal" class="delete"><i style="color:red" class="material-icons">&#xE872;</i></a></a>' + '</td></tr>'  );   
 });
 $('table#alt-table tbody').append(trArr.join('\n'));
 });
 }
 
+function fun()
+{
+    alert('hi');
+}
 
-
-/*
-name1= document.getElementById('firstname').value;
-email1= document.getElementById('email').value;
-lname1 =  document.getElementById('lastname').value;
+name1= document.getElementById('firstname');
+email1= document.getElementById('email');
+lname1 =  document.getElementById('lastname');
 $(document).ready(function(){
 $("#submit").click(function(){
 $.ajax({
@@ -38,7 +43,7 @@ data :
 {
         first_name:name1,
         last_name:lname1,
-        email : email1,
+        email : email1
 },
 success: function(response){
     console.log(response);
@@ -47,4 +52,3 @@ success: function(response){
 });
 });
 });
-*/
